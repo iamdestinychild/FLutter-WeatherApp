@@ -10,6 +10,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   IconData location = FontAwesomeIcons.locationDot;
+  String? cityName;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +26,9 @@ class _SearchScreenState extends State<SearchScreen> {
                 Text(
                   'Pick Location',
                   style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 30.0,
-                    color: Colors.white
-                  ),
+                      fontFamily: 'Poppins',
+                      fontSize: 30.0,
+                      color: Colors.white),
                 ),
                 SizedBox(
                   height: 20.0,
@@ -37,12 +37,13 @@ class _SearchScreenState extends State<SearchScreen> {
                   'Find the are or city that you want to know the detailed weather info at this time',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 17.0,
-                    color: Colors.white
-                  ),
+                      fontFamily: 'Poppins',
+                      fontSize: 17.0,
+                      color: Colors.white),
                 ),
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
                 Row(
                   children: [
                     Expanded(
@@ -68,6 +69,9 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                             Expanded(
                               child: TextField(
+                                onChanged: (value) {
+                                  cityName = value;
+                                },
                                 style: TextStyle(color: Color(0xFFD4D3EF)),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -82,15 +86,20 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     ),
                     Expanded(
-                      child: Container(
-                        height: 60.0,
-                        width: 100.0,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.0),
-                            color: Color(0xFF0e0e30)),
-                        child: Icon(
-                          Icons.location_on_rounded,
-                          color: Color(0xFFD4D3EF),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context, cityName);
+                        },
+                        child: Container(
+                          height: 60.0,
+                          width: 100.0,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.0),
+                              color: Color(0xFF0e0e30)),
+                          child: Icon(
+                            Icons.location_on_rounded,
+                            color: Color(0xFFD4D3EF),
+                          ),
                         ),
                       ),
                     )
