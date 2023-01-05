@@ -3,7 +3,9 @@ import 'package:weather_app/utility/get_location.dart';
 import 'package:weather_app/utility/get_weather.dart';
 
 class CurrentWeather {
-  String apiKey = 'apikey';
+
+  // String apiKey = 'YOur API Key';
+
 
   Future<dynamic> getCurrentWeather() async {
     GetGeoLocation geoLocation = GetGeoLocation();
